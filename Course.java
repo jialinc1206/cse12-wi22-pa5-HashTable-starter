@@ -1,3 +1,6 @@
+/**
+ * TODO: Complete the solution for Course
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,7 +12,8 @@ public class Course {
     private final String number;
     private final String description;
 
-    public Course(String department, String number, String description, int capacity){}
+    public Course(String department, String number, String description, 
+        int capacity){}
 
     public String getDepartment(){
         return null;

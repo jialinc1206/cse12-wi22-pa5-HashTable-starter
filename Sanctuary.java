@@ -15,8 +15,12 @@ public class Sanctuary {
     public int getNum(String species) {
         return 0;
     }
-
-    public int getTotal() {
+    
+    public int getTotalAnimals() {
+        return 0;
+    }
+    
+    public int getTotalSpecies() {
         return 0;
     }
 
