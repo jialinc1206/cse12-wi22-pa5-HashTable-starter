@@ -16,7 +16,7 @@ import org.junit.*;
 /**
  * TODO: Add your class header
  * 
- * IMPORTANT: Do not change the method headers and points are awarded
+ * IMPORTANT: Do not change the method names and points are awarded
  * only if your test cases cover cases that the public tester file
  * does not take into account.
  */
