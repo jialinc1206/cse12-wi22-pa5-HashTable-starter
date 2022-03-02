@@ -58,6 +58,7 @@ public class Sanctuary {
      * @return the total number of animals at the sanctuary.
      */
     public int getTotalAnimals() {
+        totalAnimals = 0;
         // add the value of each specie together
         sanctuary.forEach((key, value) -> {
             totalAnimals += value;  
@@ -85,20 +86,32 @@ public class Sanctuary {
         if(num <= 0)
             throw new IllegalArgumentException();
 
-        if(sanctuary.size() < maxSpecies) {
+        if(sanctuary.size() < maxSpecies && !(sanctuary.containsKey(species))) {
             // if the sanctuary is full, add nothing
             if(getTotalAnimals() >= maxAnimals)
                 return num;
 
             // if the sanctuary can add all the animal
             if(getTotalAnimals() + num <= maxAnimals) {
-                sanctuary.put(species, num);
+                sanctuary.put(species, num);  
                 return 0;
             }
             
             // otherwise fill the sanctuary
-            sanctuary.put(species, maxAnimals - getTotalAnimals());
-            return num - sanctuary.get(species);
+            int rescued = maxAnimals - getTotalAnimals();
+            sanctuary.put(species, rescued);
+            return num - rescued;
+        }
+        else if(sanctuary.size() <= maxSpecies && sanctuary.containsKey(species)) {
+            if(getTotalAnimals() + num <= maxAnimals) {
+                sanctuary.put(species, sanctuary.get(species) + num);
+                //System.out.println(sanctuary.get(species));
+                return 0;
+            }
+
+            int rescued = maxAnimals - getTotalAnimals();
+            sanctuary.put(species, sanctuary.get(species) + rescued);
+            return num - rescued;
         }
         return num;
     }
@@ -121,4 +134,21 @@ public class Sanctuary {
         if(sanctuary.get(species) == 0)
             sanctuary.remove(species);
     }
+
+ ///** 
+    public static void main(String[] args) {
+        Sanctuary sanct = new Sanctuary(10, 2);
+        System.out.println(sanct.rescue("species", 2));
+        System.out.println(sanct.getTotalAnimals());
+
+        System.out.println(sanct.rescue("species", 3));
+        System.out.println(sanct.getTotalAnimals());
+
+        System.out.println(sanct.rescue("species", 7));
+        System.out.println(sanct.getTotalAnimals());
+
+        System.out.println(sanct.rescue("species2", 3));
+        System.out.println(sanct.rescue("species", 7));
+    }
+  //  */
 }

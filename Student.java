@@ -66,6 +66,10 @@ public class Student implements Comparable<Student> {
      */
     @Override
     public boolean equals(Object o) {
+        if(o == null)
+            return false;
+        if(!(o instanceof Student))
+            return false;
         return ((Student)o).getFirstName().equals(firstName) &&
         ((Student)o).getLastName().equals(lastName) &&
         ((Student)o).getPID().equals(PID);
@@ -96,4 +100,11 @@ public class Student implements Comparable<Student> {
             return firstName.compareTo(o.getFirstName());
         return PID.compareTo(o.getPID());
     }
+     /**
+    public static void main(String[] args) {
+        Student student1 = new Student(new String("Test"), 
+            new String("Student1"), new String("A12345678"));
+        System.out.println(student1.getClass());
+    }
+     */
 }

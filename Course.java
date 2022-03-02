@@ -174,5 +174,22 @@ public class Course {
         return department + " " + number + " [" + capacity + 
         "]\n" + description;
     }
+
+ // /**
+    public static void main(String[] args) {
+        Course course = new Course("department", "number", "description", 10);
+        Student student1 = new Student(new String("Test"), 
+            new String("Student1"), new String("A12345678"));
+        Student student2 = new Student(new String("Test"), 
+            new String("Student2"), new String("A12345678"));
+        Student student3 = new Student(new String("Test"), 
+            new String("Student3"), new String("A12345678"));
+        course.enroll(student1);
+        course.enroll(student2);
+        course.enroll(student3);
+        course.unenroll(student2);
+        System.out.println(course.getStudents());
+    }
+//    */
 }
 
